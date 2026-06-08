@@ -1,0 +1,117 @@
+identity_engine:
+  name: "Identity Correlation Engine"
+  version: "1.0.0"
+  description: "Enterprise identity deduplication platform"
+
+sources:
+  workday:
+    enabled: true
+    connector_type: "rest_api"
+    base_url: "${WORKDAY_URL}"
+    auth: "oauth2"
+    batch_size: 1000
+    polling_interval_minutes: 60
+    
+  activedirectory:
+    enabled: true
+    connector_type: "ldap"
+    server: "${AD_SERVER}"
+    port: 389
+    use_ssl: false
+    search_base: "DC=company,DC=com"
+    
+  okta:
+    enabled: true
+    connector_type: "rest_api"
+    base_url: "${OKTA_URL}"
+    auth: "api_token"
+    batch_size: 500
+    
+  salesforce:
+    enabled: true
+    connector_type: "rest_api"
+    instance_url: "${SALESFORCE_URL}"
+    auth: "oauth2"
+    
+  sap:
+    enabled: false  # Disabled in this environment
+    connector_type: "odata_api"
+    base_url: "${SAP_URL}"
+
+normalization:
+  case_sensitive: false
+  remove_diacritics: true
+  standardize_spacing: true
+  remove_punctuation: false
+  phonetic_algorithm: "metaphone"
+
+matching:
+  strategies:
+    - name: "exact_match"
+      weight: 0.4
+      threshold: 0.95
+      enabled: true
+      
+    - name: "fuzzy_match"
+      weight: 0.3
+      algorithm: "levenshtein"
+      threshold: 0.85
+      enabled: true
+      
+    - name: "composite_match"
+      weight: 0.2
+      threshold: 0.80
+      enabled: true
+      field_weights:
+        email: 0.4
+        first_name: 0.3
+        last_name: 0.3
+      
+    - name: "ml_match"
+      weight: 0.1
+      model_path: "models/trained_matcher.pkl"
+      threshold: 0.75
+      enabled: false  # Disabled in MVP
+  
+  minimum_confidence: 0.85
+  human_review_threshold: 0.90  # Flag for manual review if score between 85-90%
+  
+  fuzzy:
+    threshold: 0.85
+    algorithm: "levenshtein"
+    
+storage:
+  backend: "postgresql"
+  connection_string: "${DATABASE_URL}"
+  connection_pool_size: 10
+  query_timeout_seconds: 30
+  retention_days: 2555  # 7 years for compliance
+
+audit:
+  enabled: true
+  immutable_log: true
+  retention_days: 2555
+  log_matching_evidence: true
+  log_attribute_changes: true
+  
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "/var/log/identity-engine/app.log"
+  max_file_size_mb: 100
+  backup_count: 10
+
+performance:
+  max_batch_size: 10000
+  parallelism_workers: 4
+  cache_size_mb: 512
+  enable_profiling: false
+
+compliance:
+  enable_gdpr_right_to_delete: true
+  enable_audit_logging: true
+  min_password_length: 16
+  enforce_ssl: true
+  allowed_cipher_suites:
+    - "TLS_AES_256_GCM_SHA384"
+    - "TLS_CHACHA20_POLY1305_SHA256"
