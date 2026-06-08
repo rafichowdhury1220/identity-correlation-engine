@@ -1,0 +1,5 @@
+phonetics==1.0.1
+pyyaml==6.0
+python-levenshtein==0.21.1
+requests==2.31.0
+pydantic==2.0.0
