@@ -149,7 +149,7 @@ identity-correlation-engine/
 
 ```bash
 # Navigate to project
-cd /Users/priyaarora/Documents/Rafi\'s\ Projects/identity-correlation-engine
+cd /identity-correlation-engine
 
 # Create virtual environment
 python -m venv venv
