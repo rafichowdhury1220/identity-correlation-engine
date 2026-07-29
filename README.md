@@ -13,7 +13,7 @@
 
 Multi-system IAM environments face critical challenges:
 
-- **Identity Fragmentation**: Same employee appears as `john.smith`, `jsmith`, `smithj`, `john_s` across systems
+- **Identity Fragmentation**: Same employee appears as `john.smith`, `jsmith`, `smithj`, `john_s` across systems.
 - **Data Inconsistency**: Email, phone, attributes vary between HR systems (Workday), Directory Services (AD), SSO platforms (Okta), ERP (SAP), CRM (Salesforce)
 - **Access Control Risk**: Unmatched identities → duplicate accounts → privilege escalation vulnerabilities
 - **Operational Overhead**: Manual reconciliation impossible at enterprise scale
