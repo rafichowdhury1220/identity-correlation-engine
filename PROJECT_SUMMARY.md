@@ -117,7 +117,7 @@ identity-correlation-engine/
 - Audit trail for compliance (SOC 2)
 - Extensible for custom systems
 
-### ✅ For Recruiters
+### ✅ For Analysts
 - **Production-ready code** with best practices
 - Type hints, comprehensive docstrings
 - Test coverage, CI/CD automation
@@ -164,7 +164,3 @@ python examples/basic_usage.py
 # Run tests
 pytest tests/ -v
 ```
-
----
-
-**This project is ready to impress solution architects, IAM engineers, and recruiters! 🚀**
