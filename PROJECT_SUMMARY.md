@@ -24,25 +24,6 @@ identity-correlation-engine/
 │   ├── config.py                               # Configuration management
 │   ├── normalizers.py                          # Text normalization utilities
 │   ├── matchers.py                             # Matching algorithms (Exact, Fuzzy, Composite, Hybrid)
-│   │
-│   ├── extractors/                             # Source system connectors (placeholder structure)
-│   │   ├── __init__.py
-│   │   ├── base.py                            # Abstract base class
-│   │   ├── workday.py                         # Workday connector
-│   │   ├── activedirectory.py                 # AD connector
-│   │   ├── okta.py                            # Okta connector
-│   │   ├── salesforce.py                      # Salesforce connector
-│   │   └── sap.py                             # SAP connector
-│   │
-│   ├── storage/                                # Data persistence layer (placeholder)
-│   │   ├── __init__.py
-│   │   ├── base.py
-│   │   ├── in_memory.py
-│   │   └── postgresql.py
-│   │
-│   └── audit/                                  # Compliance and logging
-│       ├── __init__.py
-│       └── logger.py
 │
 ├── config/
 │   └── default.yaml                            # Production configuration template
@@ -57,10 +38,7 @@ identity-correlation-engine/
 ├── docs/
 │   ├── API_REFERENCE.md                        # Complete API documentation
 │   └── INTEGRATION_GUIDE.md                    # How to build custom extractors
-│
-└── .github/
-    └── workflows/
-        └── tests.yml                            # GitHub Actions CI/CD pipeline
+
 ```
 
 ## Key Files Summary
