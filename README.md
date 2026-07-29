@@ -19,21 +19,6 @@ Multi-system IAM environments face critical challenges:
 - **Operational Overhead**: Manual reconciliation impossible at enterprise scale
 - **Compliance Issues**: SOC 2, SOX, ISO 27001 require identity audit trails and consolidated records
 
-### Real-World Impact
-```
-Without Identity Correlation:
-├─ 40-60% of identities fragmented across systems
-├─ $2M+ annual operational cost (manual reconciliation)
-├─ 3.5x increase in security incidents
-└─ Failed compliance audits
-
-With Identity Correlation Engine:
-├─ 96%+ identity matching accuracy
-├─ 80% reduction in manual work
-├─ Unified access control decisions
-└─ Compliance-ready audit trails
-```
-
 ---
 
 ## 💡 Architecture Overview
